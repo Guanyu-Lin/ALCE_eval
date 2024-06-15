@@ -25,9 +25,8 @@ from transformers import (
 
 from utils import normalize_answer, get_max_memory, remove_citations
 
-QA_MODEL="gaotianyu1350/roberta-large-squad"
-AUTOAIS_MODEL="google/t5_xxl_true_nli_mixture"
-
+QA_MODEL="../roberta-large-squad"
+AUTOAIS_MODEL="../t5_xxl_true_nli_mixture"
 global autoais_model, autoais_tokenizer
 autoais_model, autoais_tokenizer = None, None
 
@@ -259,7 +258,7 @@ def compute_mauve(data):
         max_text_length=512,
         verbose=True,
         batch_size=8,
-        featurize_model_name="gpt2-large"
+        featurize_model_name="../gpt2-large"
     )
     return out.mauve * 100
 
@@ -519,8 +518,8 @@ def main():
     result['str_em'], result['str_hit'] = compute_str_em(normalized_data)
     if qampari:
         result.update(compute_qampari_f1(normalized_data, cot=args.cot))
-    if not args.no_rouge:
-        result['rougeLsum'] = compute_rouge(normalized_data)
+    # if not args.no_rouge:
+    #     result['rougeLsum'] = compute_rouge(normalized_data)
     if args.qa:
         result.update(compute_qa(normalized_data))
     if args.mauve:

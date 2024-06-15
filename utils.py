@@ -104,6 +104,7 @@ def load_model(model_name_or_path, dtype=torch.float16, int8=False, reserve_memo
     # reserve_memory: how much memory to reserve for the model on each gpu (in GB)
 
     # Load the FP16 model
+    # model_name_or_path = "../ModelCenter/results/llama-7b-hf"
     from transformers import AutoModelForCausalLM, AutoTokenizer
     logger.info(f"Loading {model_name_or_path} in {dtype}...")
     if int8:

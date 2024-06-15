@@ -398,6 +398,10 @@ def main():
                 output_array[-1] = output_array[-1][:-len("End.")]
 
             logger.info(f"Prompt length={prompt_len}")
+            logger.info(f"Max token length={min(args.max_new_tokens, args.max_length-prompt_len)}")
+            logger.info(f"Max new token length={args.max_new_tokens}")
+            logger.info(f"Max length - prompt length={args.max_length-prompt_len}")
+            # logger.info(f"Max token length={args.max_length-prompt_len}")
             logger.info(f"Question: {item['question']}")
             logger.info(f"Gold answer: {item['answer']}")
             logger.info(f"Final model output: {output_array[-1]}") 

@@ -1,0 +1,4 @@
+{
+    "demo_prompt": "{D}",
+    "doc_prompt": "Document [{ID}](Title: {T}): {P}\n"
+}
